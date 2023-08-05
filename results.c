@@ -33,17 +33,11 @@ void zapisz_rekordy(void)
 
         for (k = 0; k < 4; k++) {
             b = txt_punkty[k];
-            asm {
-                xor b, 's'
-            }
-            fputc(b, plik);
+            fputc(b ^ 's', plik);
         }
         for (k = 0; k < 30; k++) {
             b = rekord[i].imie[k];
-            asm {
-                xor b, 'm'
-            }
-            fputc(b, plik);
+            fputc(b ^ 'm', plik);
         }
     }
     fclose(plik);
@@ -61,19 +55,13 @@ void odczytaj_rekordy(void)
         while (!feof(ptr)) {
             for (i = 0; i < 4; i++) {
                 b = fgetc(ptr);
-                asm {
-                    xor b, 's'
-                }
-                txt_punkty[i] = b;
+                txt_punkty[i] = b ^ 's';
             }
             rekord[nr_rekordu].punkty = atoi(txt_punkty);
 
             for (i = 0; i < 30; i++) {
                 b = fgetc(ptr);
-                asm {
-                    xor b, 'm'
-                }
-                rekord[nr_rekordu].imie[i] = b;
+                rekord[nr_rekordu].imie[i] = b ^ 'm';
             }
             nr_rekordu++;
         }

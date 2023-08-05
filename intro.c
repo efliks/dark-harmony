@@ -46,28 +46,14 @@ void intro_animuj(void)
 
 void przesun_scr_bufor(unsigned char* bufor)
 {
-    asm {
-		push ds
-		lds di,bufor
-		mov cx,8
-    }
-pion:
-    asm {
-		mov bx,4
-    }
-poziom:
-    asm {
-		db 66h
-		mov ax,[di][bx]
-		db 66h
-		mov [di][bx-1],ax
-		add bx,4
-		cmp bx,320
-		jne poziom
-		add di,320
-		dec cx
-		jnz pion
-		pop ds
+    int i, j;
+    unsigned char* ptr_buffer;
+
+    for (i = 0; i < 8; i++) {
+        ptr_buffer = bufor + 320 * i;
+        for (j = 0; j < 319; j++, ptr_buffer++) {
+            *ptr_buffer = *(ptr_buffer + 1);
+        }
     }
 }
 
