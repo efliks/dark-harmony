@@ -10,7 +10,6 @@
 
 #include "globals.h"
 
-int zegar = 0;
 void interrupt (*stary_zegar)(void);
 
 

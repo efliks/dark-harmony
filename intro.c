@@ -8,11 +8,10 @@
 
 #include <dos.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "globals.h"
-
-unsigned char *napis, *scroll_bufor;
 
 void paleta_inicjuj(void)
 {

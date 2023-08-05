@@ -47,6 +47,8 @@
 
 #define ON_SPEAKER 0x0d1
 #define OFF_SPEAKER 0x0d3
+#define SOUND_FREQUENCY 11025
+
 
 typedef struct typSTATEK 
 {
@@ -125,7 +127,6 @@ typedef struct tSOUND
     unsigned char* buffer;
     unsigned lenght;
 } SOUND;
-
 
 // gfx.c
 void tryb_graf(void);
@@ -257,6 +258,7 @@ void convert_address(unsigned segment, unsigned off1, unsigned char* page, unsig
 
 extern unsigned char keytab[256];
 
+extern int zegar;
 extern int ile_aktywnych;
 extern int bonus_typ;
 extern char missed_file[256];
@@ -280,6 +282,7 @@ extern unsigned char sprite[MAX_SPRITES][400];
 extern unsigned char spr_pocisk[MAX_MSPRITES][64];
 
 extern unsigned char* bufor;
+extern unsigned char *napis, *scroll_bufor;
 
 extern SOUND soundtab[MAX_SOUNDS];
 
