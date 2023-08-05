@@ -7,198 +7,102 @@
 *****************************************/
 
 #include <dos.h>
+#include <string.h> // for memset
 
 #include "globals.h"
 
 unsigned char paleta_r[256], paleta_g[256], paleta_b[256];
 
 
-void tryb_graf(void)
+void tryb_graf()
 {
-    asm {
-		mov ax,13h
-		int 10h
-    }
+    _AX = 0x13;
+    geninterrupt(0x10);
 }
 
-void tryb_text(void)
+void tryb_text()
 {
-    asm {
-		mov ax,03h
-		int 10h
-    }
+    _AX = 0x3;
+    geninterrupt(0x10);
+}
+
+void kopiuj_bufor()
+{
+    unsigned char far* ptr_vidmem = (unsigned char far *)0xA0000000L;
+    memcpy(ptr_vidmem, bufor, 64000);
+}
+
+void czysc_bufor()
+{
+    unsigned char far* ptr_vidmem = (unsigned char far *)0xA0000000L;
+    memset(bufor, 0, 64000);
+}
+
+void retrace()
+{
+    while (!(inp(0x03da) & 8))
+        ;
+    while ((inp(0x03da) & 8))
+        ;
 }
 
 void pasek(int x, int y, unsigned char kolor)
 {
-    asm {
-		push es
-		les di,bufor
-		mov ax,y
-		mov bx,ax
-		shl ax,6
-		shl bx,8
-		add ax,bx
-		add ax,x
-		add di,ax
-		mov ah,kolor
-		mov al,ah
-		stosw
-		stosw
-		stosw
-		stosw
-		pop es
+    int i;
+    unsigned char* bptr = bufor + x + y * 320;
+
+    for (i = 0; i < 8; i++, bptr++) {
+        *bptr = kolor;
     }
 }
 
 void pixel(int x, int y, unsigned char color)
 {
-    asm {
-		mov ax,x
-		or ax,ax
-		jl quit
-		cmp ax,319
-		jg quit
-		mov bx,y
-		or bx,bx
-		jl quit
-		cmp bx,199
-		jg quit
-
-		push es
-		les di,bufor
-		mov dx,bx
-		shl bx,6
-		shl dx,8
-		add bx,dx
-		add bx,ax
-		add di,bx
-		mov al,color
-		stosb
-		pop es
-    }
-quit:
-}
-
-void kopiuj_bufor(void)
-{
-    asm {
-		push ds
-		push es
-		lds si,bufor
-		mov ax,0a000h
-		mov es,ax
-		xor di,di
-		mov cx,16000
-		cld
-		db 66h
-		rep movsw
-		pop es
-		pop ds
+    if (x >= 0 && x <= 319 && y >= 0 && y <= 199) {
+        *(bufor + x + y * 320) = color;
     }
 }
 
-void czysc_bufor(void)
+void draw_sprite(unsigned char* sprite, int x, int y, int width, int height)
 {
-    asm {
-		push es
-		les di,bufor
-		xor ax,ax
-		mov cx,16000
-		cld
-		db 66h
-		rep stosw
-		pop es
-    }
-}
+    int i, j;
+    
+    unsigned char* sprptr = sprite;
+    unsigned char* bptr = bufor + x + y * 320;
 
-void draw_sprite(unsigned char* sprite, int x, int y,
-    int width, int height)
-{
-    asm {
-		push ds
-		push es
-		lds si,sprite
-		les di,bufor
-
-		mov ax,y
-		mov bx,ax
-		shl ax,6
-		shl bx,8
-		add ax,bx
-		add ax,x
-		add di,ax
-
-		mov bx,320
-		sub bx,width
-		mov dx,height
-    }
-ver:
-    asm {
-		mov cx,width
-    }
-hor:
-    asm {
-		lodsb
-		or al,al
-		jz next
-		mov byte ptr es:[di],al
-    }
-next:
-    asm {
-		inc di
-		dec cx
-		jnz hor
-
-		add di,bx
-		dec dx
-		jnz ver
-
-		pop es
-		pop ds
+    for (i = 0; i < height; i++) {
+        for (j = 0; j < width; j++, sprptr++, bptr++) {
+            if (*sprptr != 0) {
+                *bptr = *sprptr;
+            }
+        }
+        bptr += 320 - width;
     }
 }
 
 void save_pal(void)
 {
-    int k;
+    int i;
 
     outp(0x03c7, 0);
-    for (k = 0; k < 256; k++) {
-        paleta_r[k] = inp(0x03c9);
-        paleta_g[k] = inp(0x03c9);
-        paleta_b[k] = inp(0x03c9);
+    
+    for (i = 0; i < 256; i++) {
+        paleta_r[i] = inp(0x03c9);
+        paleta_g[i] = inp(0x03c9);
+        paleta_b[i] = inp(0x03c9);
     }
 }
 
 void renew_pal(void)
 {
-    int k;
+    int i;
 
     outp(0x03c8, 0);
-    for (k = 0; k < 256; k++) {
-        outp(0x03c9, paleta_r[k]);
-        outp(0x03c9, paleta_g[k]);
-        outp(0x03c9, paleta_b[k]);
-    }
-}
 
-void retrace(void)
-{
-    asm {
-		mov dx,03dah
-    }
-retrace1:
-    asm {
-		in al,dx
-		test al,8
-		jz retrace1
-    }
-retrace2:
-    asm {
-		in al,dx
-		test al,8
-		jnz retrace2
+    for (i = 0; i < 256; i++) {
+        outp(0x03c9, paleta_r[i]);
+        outp(0x03c9, paleta_g[i]);
+        outp(0x03c9, paleta_b[i]);
     }
 }
 
@@ -208,8 +112,9 @@ void flash(void)
     unsigned char r, g, b;
 
     outp(0x03c8, 0);
-    for (i = 0; i < 768; i++)
+    for (i = 0; i < 768; i++) {
         outp(0x03c9, 63);
+    }
 
     for (i = 0; i < 64; i++) {
         for (j = 0; j < 256; j++) {
