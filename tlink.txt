@@ -1,0 +1,1 @@
+c0l bonus.obj boom.obj bullets.obj clock.obj control.obj enemies.obj font.obj gfx.obj globals.obj intro.obj laser.obj main.obj player.obj results.obj sound.obj stars.obj,harmonia.exe,,cl mathl fp87 -Lc:\tc\lib
