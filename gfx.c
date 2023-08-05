@@ -10,7 +10,6 @@
 
 #include "globals.h"
 
-unsigned char* bufor;
 unsigned char paleta_r[256], paleta_g[256], paleta_b[256];
 
 

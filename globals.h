@@ -45,6 +45,9 @@
 #define SND_BONUS 3
 #define SND_ROCKET 4
 
+#define ON_SPEAKER 0x0d1
+#define OFF_SPEAKER 0x0d3
+
 typedef struct typSTATEK 
 {
     int x, y;
@@ -275,6 +278,8 @@ extern int b_punkt[30][60][2];
 
 extern unsigned char sprite[MAX_SPRITES][400];
 extern unsigned char spr_pocisk[MAX_MSPRITES][64];
+
+extern unsigned char* bufor;
 
 extern SOUND soundtab[MAX_SOUNDS];
 

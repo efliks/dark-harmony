@@ -13,8 +13,6 @@
 #include "globals.h"
 
 #define SB_BASE_ADDRESS 0x220
-#define ON_SPEAKER 0x0d1
-#define OFF_SPEAKER 0x0d3
 #define DSP_OUT 0x10
 
 #define DMA_CHANNEL 0x01
