@@ -6,6 +6,10 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
+#include <dos.h>
+#include <stdio.h>
+#include <string.h>
+
 #include "globals.h"
 
 unsigned char *napis, *scroll_bufor;

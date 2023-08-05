@@ -6,6 +6,10 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
+#include <dos.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "globals.h"
 
 #define SB_BASE_ADDRESS 0x220
@@ -27,6 +31,7 @@ void interrupt (*old_dma_int)(void);
 unsigned char end_of_sound = 1;
 
 int num_of_loaded_sounds = 0;
+
 
 int sb_init(void)
 {

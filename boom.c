@@ -6,9 +6,12 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
+#include <math.h>
+
 #include "globals.h"
 
 #define PI 3.14159265359
+
 
 void w_inicjuj_sincos(void)
 {

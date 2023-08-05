@@ -6,17 +6,12 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
-#include <alloc.h>
-#include <bios.h>
 #include <conio.h>
-#include <ctype.h>
-#include <dos.h>
-#include <math.h>
-#include <mem.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
+
+#include "globals.h"
 
 void main(void)
 {

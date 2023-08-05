@@ -6,6 +6,10 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "globals.h"
 
 REKORD rekord[12];

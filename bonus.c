@@ -6,7 +6,10 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
+#include <stdlib.h>
+
 #include "globals.h"
+
 
 void b_nadaj0(STATEK* bon)
 {

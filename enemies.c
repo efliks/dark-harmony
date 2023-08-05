@@ -6,6 +6,8 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
+#include <stdlib.h>
+
 #include "globals.h"
 
 void stat_inicjuj(STATEK* sta, KAPSULA* kaps)

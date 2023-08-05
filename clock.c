@@ -6,10 +6,13 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
+#include <dos.h>
+
 #include "globals.h"
 
 int zegar = 0;
 void interrupt (*stary_zegar)(void);
+
 
 void interrupt nowy_zegar(void)
 {

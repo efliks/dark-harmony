@@ -276,6 +276,6 @@ extern int b_punkt[30][60][2];
 extern unsigned char sprite[MAX_SPRITES][400];
 extern unsigned char spr_pocisk[MAX_MSPRITES][64];
 
-// extern SOUND soundtab[MAX_SOUNDS];
+extern SOUND soundtab[MAX_SOUNDS];
 
 #endif // _GLOBALS_H
