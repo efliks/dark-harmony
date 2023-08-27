@@ -125,17 +125,19 @@ void drukuj_liste(void)
 {
     int i, y, ile_wierszy;
     char txt_punkty[4];
-    zegar = 0;
+    
     for (ile_wierszy = 0; ile_wierszy < 12; ile_wierszy++) {
+        timer_start(3);
+
         for (i = 0, y = 3; i <= ile_wierszy; i++, y += 17) {
             put_string(itoa(rekord[i].punkty, txt_punkty, 10), 30, y, bufor);
             put_string(rekord[i].imie, 70, y, bufor);
         }
+    
         kopiuj_bufor();
         czysc_bufor();
-        while (zegar != 7)
-            ;
-        zegar = 0;
+
+        timer_wait();
     }
 }
 

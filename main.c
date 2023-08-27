@@ -54,7 +54,7 @@ void main(void)
 
     init_font();
     init_keyboard();
-    zegar_start();
+    clock_init();
     tryb_graf();
     paleta_inicjuj();
     save_pal();
@@ -85,6 +85,8 @@ void main(void)
         pom = 0;
 
         do {
+            timer_start(3);
+
             gwiazdy();
             for (i = 0; i < 10; i++)
                 smuga_wykonaj(&smuga[i]);
@@ -125,9 +127,9 @@ void main(void)
 
             kopiuj_bufor();
             czysc_bufor();
-            while (!zegar)
-                ;
-            zegar = 0;
+
+            timer_wait();
+
             if (keytab[KEY_ESCAPE])
                 koniec();
 

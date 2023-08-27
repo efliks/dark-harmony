@@ -32,15 +32,17 @@ void paleta_inicjuj(void)
 void intro_animuj(void)
 {
     int i, ile;
-    zegar = 0;
+    
     for (ile = 0; ile < 20; ile++) {
-        for (i = 0; i < 21120; i += 20)
+        timer_start(3);
+
+        for (i = 0; i < 21120; i += 20) {
             memcpy(bufor + i, napis + i, ile);
+        }
+    
         kopiuj_bufor();
         czysc_bufor();
-        while (zegar != 3)
-            ;
-        zegar = 0;
+        timer_wait();
     }
 }
 
@@ -63,7 +65,6 @@ void intro(void)
     char str[5][30];
     char scroll_text[600], tmp[5];
 
-    zegar = 0;
     strcpy(str[0], "Wersja 7.0");
     strcpy(str[1], "Kod/Dzwiek: Majuma");
     strcpy(str[2], "Grafika: Oolv");
@@ -84,6 +85,8 @@ void intro(void)
     memset(scroll_bufor, 0, 320 * 8);
     intro_animuj();
     for (j = 0; j < 30; j++) {
+        timer_start(3);
+
         memcpy(bufor, napis, 21120);
         for (i = 0, wspx = 0; i < j; i++, wspx += 8) {
             for (k = 0, wspy = 76; k < 3; k++, wspy += 17) {
@@ -103,16 +106,16 @@ void intro(void)
         }
         kopiuj_bufor();
         czysc_bufor();
-        while (zegar != 3)
-            ;
-        zegar = 0;
+
+        timer_wait();
     }
-    zegar = 0;
 
     play_sound(&soundtab[random(SND_EXPLOSION)]);
     flash();
 
     while (1) {
+        timer_start(3);
+
         memcpy(bufor, napis, 21120);
         put_string(str[0], centruj_x(str[0]), 76, bufor);
         put_string(str[1], centruj_x(str[1]), 93, bufor);
@@ -131,11 +134,12 @@ void intro(void)
         }
         memcpy(bufor + 44480, scroll_bufor, 8 * 320);
         przesun_scr_bufor(scroll_bufor);
+
         kopiuj_bufor();
         czysc_bufor();
-        while (zegar != 3)
-            ;
-        zegar = 0;
+
+        timer_wait();
+
         if (keytab[KEY_SPACE])
             break;
         if (keytab[KEY_ESCAPE])
@@ -148,7 +152,7 @@ void koniec(void)
     fade_down();
     zapisz_rekordy();
 
-    zegar_koniec();
+    clock_shutdown();
     restore_keyboard();
 
     sb_dsp_out(OFF_SPEAKER);

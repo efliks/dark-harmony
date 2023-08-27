@@ -10,7 +10,6 @@
 
 unsigned char keytab[256];
 
-int zegar = 0;
 int ile_aktywnych;
 int bonus_typ;
 char missed_file[256];

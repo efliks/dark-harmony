@@ -230,8 +230,11 @@ void init_keyboard(void);
 void restore_keyboard(void);
 
 // clock.c
-void zegar_start(void);
-void zegar_koniec(void);
+void timer_start(unsigned long ticks);
+void timer_wait();
+
+void clock_init(void);
+void clock_shutdown(void);
 
 // sounds.c
 int sb_init(void);
@@ -258,7 +261,6 @@ void convert_address(unsigned segment, unsigned off1, unsigned char* page, unsig
 
 extern unsigned char keytab[256];
 
-extern int zegar;
 extern int ile_aktywnych;
 extern int bonus_typ;
 extern char missed_file[256];
