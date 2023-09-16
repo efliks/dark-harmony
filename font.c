@@ -44,7 +44,7 @@ void put_string(char* text, int x, int y, unsigned char* where)
     int i = 0;
 
     if (x < 0) {
-        x = 160 - 8 * strlen(text);
+        x = 160 - 4 * strlen(text);
     }
 
     while (text[i]) {
