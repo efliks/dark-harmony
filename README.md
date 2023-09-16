@@ -47,7 +47,7 @@ And run the executable:
 2. What power-ups can be collected? 
 
     The power-up system is super simple. After killing 20 alien ships, a power-up will
-    pop up at a random position. Collect it by flying your ship towoards it. A power-up
+    pop up at a random position. Collect it by flying your ship towards it. A power-up
     upgrades the weapon and at the same time adds one "life". If you get hit by an alien
     ship, not only do you lose one "life", but your weapon is downgraded as well.
 
