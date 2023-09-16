@@ -1,4 +1,4 @@
-# Dark Harmony 0.1
+# Dark Harmony v0.1
 
 Dark Harmony, previously known under a Polish name Mroczna Harmonia, was my first
 game written in C. If I recall properly, the development started around 1999,
@@ -39,15 +39,15 @@ And run the executable:
 
 1. How to play Dark Harmony?
 
-    Once in the intro screen, hit <space> to enter the game. Use keyboard arrows to control 
-    the position of the player. Use <ctrl> to fire the weapon at the alien ships. You can
-    hit <space> at any time to pause the game. Return to the game by pressing any of the
-    arrow keys. Use <ESC> to exit the game.
+    Once in the intro screen, hit \<SPACE\> to enter the game. Use keyboard arrows to control 
+    the position of the player. Use \<CTRL\> to fire the weapon at the alien ships. You can
+    hit \<SPACE\> at any time to pause the game. Return to the game by pressing any of the
+    arrow keys. Use \<ESC\> to exit the game.
 
 2. What power-ups can be collected? 
 
     The power-up system is super simple. After killing 20 alien ships, a power-up will
-    pop up at a random position. Collect it by directing your ship towoards it. A power-up
+    pop up at a random position. Collect it by flying your ship towoards it. A power-up
     upgrades the weapon and at the same time adds one "life". If you get hit by an alien
     ship, not only do you lose one "life", but your weapon is downgraded as well.
 
