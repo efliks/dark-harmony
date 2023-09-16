@@ -1,7 +1,7 @@
 /*****************************************
   Mroczna Harmonia
 
-  clock.c   xxxxxxxxxxxx
+  clock.c   Facility to handle custom timer
 
   (C) 2001, 2023  M. Feliks
 *****************************************/
@@ -31,8 +31,12 @@ void timer_start(unsigned long ticks)
 
 void timer_wait()
 {
-    while (timer < timer_stop)
-        ;
+    while (timer < timer_stop) {
+        // Reduce CPU load in VirtualBox from 100% to 65%
+        asm {
+            hlt
+        }
+    }
 }
 
 void interrupt clock_interrupt(void)
