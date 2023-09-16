@@ -37,7 +37,7 @@ void main(void)
 
     printf("%s", "Loading files...\n");
 
-    if (!load_files("sprites.dat", SPRITE_FILES) || !load_files("msprites.dat", MSPRITE_FILES) || !load_bin(napis, "graphics\\intro.bin")) {
+    if (!load_files("sprites.dat", SPRITE_FILES) || !load_files("msprites.dat", MSPRITE_FILES) || !load_bin(napis, "gamedata\\intro.bin")) {
         printf("%s%s%s", "Unable to open file ", missed_file, "\n");
         free(bufor);
         free(scroll_bufor);
