@@ -19,6 +19,7 @@ typedef struct typGWIAZDA
 } GWIAZDA;
 
 GWIAZDA gwiazda[50];
+int licznik = 0;
 
 
 void g_inicjuj(void)
@@ -47,12 +48,12 @@ void g_inicjuj(void)
 
 void gwiazdy(void)
 {
-    static int licznik;
     int i, x, y;
     GWIAZDA* g;
 
-    if ((++licznik) > 3)
+    if ((++licznik) > 3) {
         licznik = 0;
+    }
 
     for (i = 0; i < 50; i++) {
         g = &gwiazda[i];
