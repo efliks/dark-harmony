@@ -13,13 +13,15 @@
 void interrupt (*old_clock_interrupt)(void);
 
 const unsigned long clock_frequency = 1193181;
-const unsigned long dos_divisor = 65535; 
+const unsigned long dos_divisor = 65535;
+const unsigned long dos_frequency = clock_frequency / dos_divisor;   // 18.206775005722132 ticks/s
 
-// timer factor: how many times faster than regular timer (f * 18.02/s)
-const unsigned long timer_factor = 15;
-const unsigned long my_divisor = 4369; 
+const unsigned long my_divisor = 8192; 
+const unsigned long my_frequency = clock_frequency / dos_divisor;   // 145.6519775390625 ticks/s
 
-unsigned long timer = 0, timer_stop;
+const unsigned long timer_factor = my_frequency / dos_frequency;  // call DOS interrupt every 8 ticks
+
+unsigned long timer = 0, timer_dos = 0, timer_stop;
 
 
 void timer_start(unsigned long ticks)
@@ -35,7 +37,10 @@ void timer_wait()
 
 void interrupt clock_interrupt(void)
 {
-    if ((++timer) % timer_factor == 0) {
+    timer++;
+
+    if ((++timer_dos) > timer_factor) {
+        timer_dos = 0;
         old_clock_interrupt();
     }
 }
