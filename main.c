@@ -85,7 +85,7 @@ void main(void)
         pom = 0;
 
         do {
-            timer_start(3);
+            timer_start(1);
 
             gwiazdy();
             for (i = 0; i < 10; i++)

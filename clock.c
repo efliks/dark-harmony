@@ -10,16 +10,16 @@
 
 #include "globals.h"
 
+#define CLOCK_FREQUENCY 1193181
+#define DOS_DIVISOR 65535
+#define DOS_FREQUENCY CLOCK_FREQUENCY / DOS_DIVISOR   // 18.206775005722132 ticks/s
+
+#define MY_DIVISOR 8192 
+#define MY_FREQUENCY CLOCK_FREQUENCY / DOS_DIVISOR   // 145.6519775390625 ticks/s
+
+#define TIMER_FACTOR MY_FREQUENCY / DOS_FREQUENCY  // call DOS interrupt every 8 ticks
+
 void interrupt (*old_clock_interrupt)(void);
-
-const unsigned long clock_frequency = 1193181;
-const unsigned long dos_divisor = 65535;
-const unsigned long dos_frequency = clock_frequency / dos_divisor;   // 18.206775005722132 ticks/s
-
-const unsigned long my_divisor = 8192; 
-const unsigned long my_frequency = clock_frequency / dos_divisor;   // 145.6519775390625 ticks/s
-
-const unsigned long timer_factor = my_frequency / dos_frequency;  // call DOS interrupt every 8 ticks
 
 unsigned long timer = 0, timer_dos = 0, timer_stop;
 
@@ -39,7 +39,7 @@ void interrupt clock_interrupt(void)
 {
     timer++;
 
-    if ((++timer_dos) > timer_factor) {
+    if ((++timer_dos) > TIMER_FACTOR) {
         timer_dos = 0;
         old_clock_interrupt();
     }
@@ -52,8 +52,8 @@ void clock_init(void)
 	
     outportb(0x43, 0x34);
 
-    outportb(0x40, (unsigned char)(my_divisor & 0xff));
-    outportb(0x40, (unsigned char)((my_divisor >> 8) & 0xff));
+    outportb(0x40, (unsigned char)(MY_DIVISOR & 0xff));
+    outportb(0x40, (unsigned char)((MY_DIVISOR >> 8) & 0xff));
 }
 
 void clock_shutdown(void)
