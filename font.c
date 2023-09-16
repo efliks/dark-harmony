@@ -43,6 +43,10 @@ void put_string(char* text, int x, int y, unsigned char* where)
 {
     int i = 0;
 
+    if (x < 0) {
+        x = 160 - 8 * strlen(text);
+    }
+
     while (text[i]) {
         put_char(text[i], x, y, where);
         i++;

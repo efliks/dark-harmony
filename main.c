@@ -104,15 +104,15 @@ void main(void)
                     licznik = 0;
                 }
                 if (bonus_typ == NOWA_GIW)
-                    put_string("You've got a new weapon !", 100, 0, bufor);
+                    put_string("You've got a new weapon !", -1, 0, bufor);
                 else if (bonus_typ == BONUS_POLE)
-                    put_string("You've got a force field !", 116, 0, bufor);
+                    put_string("You've got a force field !", -1, 0, bufor);
             }
             if (pom < 100)
                 pom++;
 
             if (keytab[KEY_SPACE] && !keytab[KEY_RIGHTCTRL] && !keytab[KEY_UPARROW] && !keytab[KEY_DOWNARROW] && !keytab[KEY_LEFTARROW] && !keytab[KEY_RIGHTARROW] && pom == 100) {
-                put_string("Paused...", 98, 96, bufor);
+                put_string("Paused...", -1, 96, bufor);
                 kopiuj_bufor();
                 czysc_bufor();
                 while (1) {
