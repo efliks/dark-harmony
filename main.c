@@ -19,36 +19,32 @@ void main(void)
     char txt_bufor[4];
     KAPSULA* kaps = &kapsula;
 
-    clrscr();
-
-    printf("Initializing sound...");
+    printf("Initializing sound...\n");
 
     if (!sb_init()) {
-        printf("%s", "\nSound Blaster not present!\n\n");
+        printf("%s", "Cannot initialize sound card\n");
         exit(1);
     }
 
-    printf("%s", "OK\nAllocating memory...");
+    printf("%s", "Allocating memory...\n");
 
     if ((bufor = (unsigned char*)malloc(64000)) == NULL || (scroll_bufor = (unsigned char*)malloc(320 * 66)) == NULL || (napis = (unsigned char*)malloc(21120)) == NULL) {
         free(bufor);
         free(scroll_bufor);
-        printf("%s", "\nNot enough free memory!\n\n");
+        printf("%s", "Not enough free memory!\n");
         exit(2);
     }
 
-    printf("%s", "OK\nLoading files...");
+    printf("%s", "Loading files...\n");
 
     if (!load_files("sprites.dat", SPRITE_FILES) || !load_files("msprites.dat", MSPRITE_FILES) || !load_files("sounds.dat", SOUND_FILES) || !load_bin(napis, "graphics\\intro.bin")) {
-        printf("%s%s%s", "\nUnable to open file ", missed_file, "\n\n");
+        printf("%s%s%s", "Unable to open file ", missed_file, "\n");
         free(bufor);
         free(scroll_bufor);
         free(napis);
         unload_sounds();
         exit(3);
     }
-
-    printf("%s", "OK\n");
 
     odczytaj_rekordy();
 
@@ -108,15 +104,15 @@ void main(void)
                     licznik = 0;
                 }
                 if (bonus_typ == NOWA_GIW)
-                    put_string("Rozbudowa broni", 100, 0, bufor);
+                    put_string("You've got a new weapon !", 100, 0, bufor);
                 else if (bonus_typ == BONUS_POLE)
-                    put_string("Pole silowe", 116, 0, bufor);
+                    put_string("You've got a force field !", 116, 0, bufor);
             }
             if (pom < 100)
                 pom++;
 
             if (keytab[KEY_SPACE] && !keytab[KEY_RIGHTCTRL] && !keytab[KEY_UPARROW] && !keytab[KEY_DOWNARROW] && !keytab[KEY_LEFTARROW] && !keytab[KEY_RIGHTARROW] && pom == 100) {
-                put_string("Zatrzymano...", 98, 96, bufor);
+                put_string("Paused...", 98, 96, bufor);
                 kopiuj_bufor();
                 czysc_bufor();
                 while (1) {

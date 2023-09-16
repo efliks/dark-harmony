@@ -74,9 +74,9 @@ void zmien_rekordy(int punkty)
     int i, k, nr = -1;
     char imie[30], napis1[20], napis2[25], znak, txt_punkty[4];
 
-    strcpy(napis1, "Podsumowanie: ");
+    strcpy(napis1, "Summary: ");
     strcat(napis1, itoa(punkty, txt_punkty, 10));
-    strcpy(napis2, "Podaj swoj nick");
+    strcpy(napis2, "Type in your name");
 
     for (i = 0; i < 30; i++)
         imie[i] = 0;
@@ -162,18 +162,20 @@ void brak_listy(void)
 {
     int i, j;
 
-    for (i = 0, j = 600; i < 12; i++, j -= 50)
+    for (i = 0, j = 200; i < 12; i++, j -= 15) {
         rekord[i].punkty = j;
-    strcpy(rekord[0].imie, "S.A.R.G.E.");
-    strcpy(rekord[1].imie, "Linoleum");
-    strcpy(rekord[2].imie, "Devastator");
-    strcpy(rekord[3].imie, "Damage, Inc.");
-    strcpy(rekord[4].imie, "Satan's Slave");
-    strcpy(rekord[5].imie, "Terminator");
-    strcpy(rekord[6].imie, "Doctor Death");
-    strcpy(rekord[7].imie, "The Antichrist");
-    strcpy(rekord[8].imie, "Deliberator");
-    strcpy(rekord[9].imie, "The Chosen One");
-    strcpy(rekord[10].imie, "Grolsher");
-    strcpy(rekord[11].imie, "Fryer");
+    }
+    
+    strcpy(rekord[0].imie, "Night Crawler");
+    strcpy(rekord[1].imie, "Rapid Fire");
+    strcpy(rekord[2].imie, "Grinder");
+    strcpy(rekord[3].imie, "Electric Eye");
+    strcpy(rekord[4].imie, "Devil's Child");
+    strcpy(rekord[5].imie, "Jawbreaker");
+    strcpy(rekord[6].imie, "The Sentinel");
+    strcpy(rekord[7].imie, "Turbo Lover");
+    strcpy(rekord[8].imie, "Johnny B. Goode");
+    strcpy(rekord[9].imie, "Leather Rebel");
+    strcpy(rekord[10].imie, "Demonizer");
+    strcpy(rekord[11].imie, "Spectre");
 }

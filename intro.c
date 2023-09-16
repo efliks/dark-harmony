@@ -65,11 +65,11 @@ void intro(void)
     char str[5][30];
     char scroll_text[600], tmp[5];
 
-    strcpy(str[0], "Wersja 7.0");
-    strcpy(str[1], "Kod/Dzwiek: Majuma");
-    strcpy(str[2], "Grafika: Oolv");
-    strcpy(str[3], "majuma@wp.pl");
-    strcpy(str[4], "14 czerwca 2001");
+    strcpy(str[0], "Version: 0.1");
+    strcpy(str[1], "Code: Mfx");
+    strcpy(str[2], "Gfx: Oolv");
+    strcpy(str[3], "mikolaj.feliks@gmail.com");
+    strcpy(str[4], "(C) 2001, 2023");
 
     strcpy(scroll_text, itoa(rekord[0].punkty, tmp, 10));
     strcat(scroll_text, " ");
