@@ -10,7 +10,7 @@ The code is really bad from today's perspective, but keep in mind that it was
 written by a teenager. I had to remove the sound code, which was buggy and
 never worked properly. Maybe I will add it again if I find some time.
 
-In the meantime, enjoy Dark Harmony in all its glory!
+In the meantime, enjoy Dark Harmony!
 
 <div align="center">
     <img src="showcase.gif" />
