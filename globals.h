@@ -139,6 +139,7 @@ void pixel(int x, int y, unsigned char kolor);
 void draw_sprite(unsigned char* sprite, int x, int y, int width, int height);
 void pasek(int x, int y, unsigned char kolor);
 
+void paleta_inicjuj(void);
 void renew_pal(void);
 void save_pal(void);
 
@@ -187,7 +188,6 @@ void intro(void);
 void koniec(void);
 
 void intro_animuj(void);
-void paleta_inicjuj(void);
 
 int load_bin(unsigned char* where, char* filename);
 int load_files(unsigned char* listfile, int flag);

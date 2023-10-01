@@ -6,28 +6,11 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
-#include <dos.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "globals.h"
-
-void paleta_inicjuj(void)
-{
-    int i;
-    outportb(0x03c8, 100);
-    for (i = 0; i < 64; i++) {
-        outportb(0x03c9, 0);
-        outportb(0x03c9, 0);
-        outportb(0x03c9, i);
-    }
-    for (i = 0; i < 64; i++) {
-        outportb(0x03c9, i);
-        outportb(0x03c9, 0);
-        outportb(0x03c9, 0);
-    }
-}
 
 void intro_animuj(void)
 {

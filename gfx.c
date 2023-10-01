@@ -80,6 +80,25 @@ void draw_sprite(unsigned char* sprite, int x, int y, int width, int height)
     }
 }
 
+void paleta_inicjuj(void)
+{
+    int i;
+
+    outportb(0x03c8, 100);
+
+    for (i = 0; i < 64; i++) {
+        outportb(0x03c9, 0);
+        outportb(0x03c9, 0);
+        outportb(0x03c9, i);
+    }
+    for (i = 0; i < 64; i++) {
+        outportb(0x03c9, i);
+        outportb(0x03c9, 0);
+        outportb(0x03c9, 0);
+    }
+}
+
+
 void save_pal(void)
 {
     int i;
