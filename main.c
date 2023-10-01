@@ -115,9 +115,14 @@ void main(void)
                 put_string("Paused...", -1, 96, bufor);
                 kopiuj_bufor();
                 czysc_bufor();
+
                 while (1) {
-                    if (keytab[KEY_RIGHTCTRL] || keytab[KEY_UPARROW] || keytab[KEY_DOWNARROW] || keytab[KEY_LEFTARROW] || keytab[KEY_RIGHTARROW])
+                    timer_start(1);
+
+                    if (keytab[KEY_RIGHTCTRL] || keytab[KEY_UPARROW] || keytab[KEY_DOWNARROW] || keytab[KEY_LEFTARROW] || keytab[KEY_RIGHTARROW]) {
                         break;
+                    }
+                    timer_wait();
                 }
             }
 
