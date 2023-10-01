@@ -22,18 +22,19 @@ To compile Dark Harmony, you need [Turbo C++ 3.0](https://winworldpc.com/product
 and a PC running DOS. You can also use a DOS emulator, for example DOSBox or 
 a VirtualBox VM with DOS.
 
-Once you have Turbo C++ 3.0 installed, make sure that the PATH variable is updated 
-in autoexec.bat like so:
+Once you have Turbo C++ 3.0 installed, replace the following paths in the makefile 
+with your own:
 
-    PATH C:\TC\BIN;%PATH%
+    CC=c:\tc\bin\tcc.exe
+    LINK=c:\tc\bin\tlink.exe
 
-Then enter the game directory, and build the executable:
+And adjust the -L option in tlink.txt:
 
-    C:\HARMONIA > make
+    -Lc:\tc\lib
 
-And run the executable:
+Then, build the executable:
 
-    C:\HARMONIA > harmonia.exe
+    c:\harmonia > c:\tc\bin\make.exe -f makefile
 
 ## Q&A
 
