@@ -17,26 +17,28 @@ void init_font(void)
 void put_char(char ascii_code, int x, int y, unsigned char* where)
 {
     int i, j, col;
-    unsigned char *ptr_char, color;
+    unsigned char *ptr_char, *ptr_sprite, sprite[64];
 
     if (ascii_code >= 'a' && ascii_code <= 'z') {
        ascii_code += ('A' - 'a');
     }
 
     ptr_char = &chardata[((ascii_code - ' ') & 63) << 3];
+    ptr_sprite = sprite;
 
     for (i = 0; i < 8; i++, ptr_char++) {
-        for (j = 0; j < 8; j++) {
+        for (j = 0; j < 8; j++, ptr_sprite++) {
             col = 7 - j;
             if ((*ptr_char >> col) & 1) {
-                color = (unsigned char)(22 + i);
+                *ptr_sprite = (unsigned char)(22 + i);
             }
             else {
-                color = 0;
+                *ptr_sprite = 0;
             }
-            *(where + (i + y) * 320 + j + x) = color;
         }
     }
+    
+    draw_sprite(sprite, x, y, 8, 8, where);
 }
 
 void put_string(char* text, int x, int y, unsigned char* where)

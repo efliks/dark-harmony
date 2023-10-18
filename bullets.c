@@ -145,9 +145,9 @@ void poc_wykonaj(POCISK* poc)
     int i;
     if (poc->aktywny) {
         if (poc->pom1 == 0)
-            draw_sprite(spr_pocisk[poc->k1], poc->x, poc->y, 8, 8);
+            draw_sprite(spr_pocisk[poc->k1], poc->x, poc->y, 8, 8, bufor);
         else
-            draw_sprite(spr_pocisk[poc->k2], poc->x, poc->y, 8, 8);
+            draw_sprite(spr_pocisk[poc->k2], poc->x, poc->y, 8, 8, bufor);
         if ((poc->pom2++) == 10) {
             poc->pom2 = 0;
             if (poc->pom1 == 0)

@@ -136,7 +136,7 @@ void kopiuj_bufor(void);
 void czysc_bufor(void);
 
 void pixel(int x, int y, unsigned char kolor);
-void draw_sprite(unsigned char* sprite, int x, int y, int width, int height);
+void draw_sprite(unsigned char* sprite, int x, int y, int width, int height, unsigned char* where);
 void pasek(int x, int y, unsigned char kolor);
 
 void paleta_inicjuj(void);

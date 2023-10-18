@@ -25,7 +25,7 @@ void kaps_inicjuj(KAPSULA* kaps)
 
 void kaps_wykonaj(KAPSULA* kaps)
 {
-    draw_sprite(sprite[kaps->klatka], kaps->x, kaps->y, 20, 20);
+    draw_sprite(sprite[kaps->klatka], kaps->x, kaps->y, 20, 20, bufor);
 
     if ((kaps->pom2++) == 12) {
         kaps->pom2 = 0;

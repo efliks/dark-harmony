@@ -31,7 +31,7 @@ void bonus_inicjuj(STATEK* bon)
 void bonus_wykonaj(STATEK* bon, KAPSULA* kaps)
 {
     if (bon->aktywny) {
-        draw_sprite(sprite[bon->klatka[bon->k]], bon->x, bon->y, 20, 20);
+        draw_sprite(sprite[bon->klatka[bon->k]], bon->x, bon->y, 20, 20, bufor);
 
         if ((bon->licznik++) == 12) {
             bon->licznik = 0;

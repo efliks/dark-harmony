@@ -12,10 +12,10 @@ void laser(int x, int y, KAPSULA* kaps, POLE* ple, int laser_pom)
 {
     while (y < 199 - 8) {
         if (laser_pom) {
-            draw_sprite(spr_pocisk[BUZZ], x, y, 8, 8);
+            draw_sprite(spr_pocisk[BUZZ], x, y, 8, 8, bufor);
             laser_pom = 0;
         } else {
-            draw_sprite(spr_pocisk[BUZZ + 1], x, y, 8, 8);
+            draw_sprite(spr_pocisk[BUZZ + 1], x, y, 8, 8, bufor);
             laser_pom = 1;
         }
         y += 8;

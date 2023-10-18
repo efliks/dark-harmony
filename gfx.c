@@ -63,12 +63,12 @@ void pixel(int x, int y, unsigned char color)
     }
 }
 
-void draw_sprite(unsigned char* sprite, int x, int y, int width, int height)
+void draw_sprite(unsigned char* sprite, int x, int y, int width, int height, unsigned char* where)
 {
     int i, j;
     
     unsigned char* sprptr = sprite;
-    unsigned char* bptr = bufor + x + y * 320;
+    unsigned char* bptr = where + x + y * 320;
 
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++, sprptr++, bptr++) {

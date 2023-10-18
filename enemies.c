@@ -88,7 +88,7 @@ int stat_kstrl(STATEK* sta, KAPSULA* kaps)
 void statek_wykonaj(STATEK* sta, int licznik)
 {
     if (sta->aktywny == 1) {
-        draw_sprite(sprite[sta->klatka[sta->k]], sta->x, sta->y, 20, 20);
+        draw_sprite(sprite[sta->klatka[sta->k]], sta->x, sta->y, 20, 20, bufor);
 
         // animacja
         if (stat_kstrl(sta, &kapsula)) {
@@ -119,7 +119,7 @@ void statek_wykonaj(STATEK* sta, int licznik)
                 stat_ruch(sta);
         }
     } else if (!sta->aktywny) {
-        draw_sprite(sprite[sta->klatka[sta->k]], sta->x, sta->y, 20, 20);
+        draw_sprite(sprite[sta->klatka[sta->k]], sta->x, sta->y, 20, 20, bufor);
 
         if ((sta->licznik++) == 25) {
             sta->licznik = 0;
