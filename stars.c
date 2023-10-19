@@ -58,7 +58,7 @@ void gwiazdy(void)
     for (i = 0; i < 50; i++) {
         g = &gwiazda[i];
 
-        bufor[(g->y << 6) + (g->y << 8) + g->x] = g->kolor;
+        pixel(g->x, g->y, g->kolor);
 
         switch (g->v) {
         case 0:
