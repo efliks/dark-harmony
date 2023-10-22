@@ -7,6 +7,7 @@
 *****************************************/
 
 #include <dos.h>
+#include <string.h>
 
 #include "globals.h"
 

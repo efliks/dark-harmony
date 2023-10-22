@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 
 #include "globals.h"
 
@@ -147,7 +148,7 @@ void analiza_wynikow(int punkty)
         zmien_rekordy(punkty);
     drukuj_liste();
 
-    play_sound(&soundtab[random(SND_EXPLOSION)]);
+    play_sound(&soundtab[rand() % SND_EXPLOSION]);
     flash();
 
     while (1) {

@@ -6,9 +6,12 @@
   (C) 2001, 2023  M. Feliks
 *****************************************/
 
+#include <string.h>
+
 #include "globals.h"
 
 unsigned char chardata[];
+
 
 void init_font(void)
 {

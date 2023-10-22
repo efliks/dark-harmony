@@ -30,8 +30,8 @@ void g_inicjuj(void)
     for (i = 0; i < 50; i++) {
         g = &gwiazda[i];
 
-        g->x = random(320);
-        g->y = random(200);
+        g->x = rand() % 320;
+        g->y = rand() % 200;
 
         if (i < 10) {
             g->v = 0;
@@ -73,7 +73,7 @@ void gwiazdy(void)
                 g->y++;
         }
         if (g->y > 199) {
-            g->x = random(320);
+            g->x = rand() % 320;
             g->y = 0;
         }
     }

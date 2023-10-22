@@ -19,7 +19,7 @@ void b_nadaj0(STATEK* bon)
 void bonus_inicjuj(STATEK* bon)
 {
     int i, j = 36;
-    bon->x = random(299);
+    bon->x = rand() % 299;
     bon->y = 0;
     bon->licznik = 0;
     for (i = 0; i < 6; i++)

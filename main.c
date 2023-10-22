@@ -9,6 +9,7 @@
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <string.h>
 
 #include "globals.h"
@@ -55,7 +56,8 @@ void main(void)
     paleta_inicjuj();
     save_pal();
     w_inicjuj_sincos();
-    randomize();
+    
+    srand(time(NULL));
 
     sb_dsp_out(ON_SPEAKER);
     enable_dma_int();

@@ -113,7 +113,7 @@ void p_nadaj0(void)
 void p_kontrola_kaps(POCISK* poc, KAPSULA* kaps, POLE* ple)
 {
     if (poc->x > kaps->x && poc->x < kaps->x + 19 && poc->y > kaps->y && poc->y < kaps->y + 19 && !kaps->trafiona && !ple->aktywne) {
-        play_sound(&soundtab[random(SND_EXPLOSION)]);
+        play_sound(&soundtab[rand() % SND_EXPLOSION]);
 
         kaps->giwera--;
         kaps->trafiona = 1;
@@ -136,7 +136,7 @@ void p_kontrola_stat(POCISK* poc, STATEK* sta, KAPSULA* kaps)
         kaps->licznik++;
         ile_aktywnych--;
 
-        play_sound(&soundtab[random(SND_EXPLOSION)]);
+        play_sound(&soundtab[rand() % SND_EXPLOSION]);
     }
 }
 

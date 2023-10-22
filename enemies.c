@@ -13,36 +13,44 @@
 void stat_inicjuj(STATEK* sta, KAPSULA* kaps)
 {
     int i, j;
-    if (!random(2))
-        sta->x = random(30);
-    else
-        sta->x = random(30) + 269;
-    sta->y = random(79);
+    
+    if ((rand() % 2) == 0) {
+        sta->x = rand() % 30;
+    }
+    else {
+        sta->x = (rand() % 30) + 269;
+    }
+    sta->y = rand() % 79;
+    
     sta->zm_x = 0;
     sta->zm_y = 0;
     sta->aktywny = 1;
-    sta->xs_min = random(319);
-    sta->xs_max = sta->xs_min + random(319 - sta->xs_min);
-    for (i = 0; i < 3; i++)
-        sta->poc_x[i] = random(319);
+    
+    sta->xs_min = rand() % 319;
+    sta->xs_max = sta->xs_min + rand() % (319 - sta->xs_min);
+    
+    for (i = 0; i < 3; i++) {
+        sta->poc_x[i] = rand() % 319;
+    }
+
     sta->licznik = 0;
     sta->k = 0;
     sta->laser_pom = 0;
     if (kaps->punkty < 20)
         sta->giwera = 0;
     else if (kaps->punkty >= 20 && kaps->punkty < 40)
-        sta->giwera = random(2);
+        sta->giwera = rand() % 2;
     else if (kaps->punkty >= 40 && kaps->punkty < 60)
-        sta->giwera = random(3);
+        sta->giwera = rand() % 3;
     else if (kaps->punkty >= 60 && kaps->punkty < 80)
-        sta->giwera = random(4);
+        sta->giwera = rand() % 4;
     else if (kaps->punkty >= 80 && kaps->punkty < 100)
-        sta->giwera = random(5);
+        sta->giwera = rand() % 5;
     else
-        sta->giwera = random(6);
+        sta->giwera = rand() % 6;
     if (sta->giwera != 5) {
-        sta->ruch = random(2);
-        sta->v = random(2);
+        sta->ruch = rand() % 2;
+        sta->v = rand() % 2;
     } else {
         sta->ruch = 2;
         sta->v = 1;
@@ -209,8 +217,8 @@ void stat_ruch2(STATEK* statek)
             }
         }
         if (!statek->zm_x && !statek->zm_y) {
-            statek->kx = random(299);
-            statek->ky = random(100);
+            statek->kx = rand() % 299;
+            statek->ky = rand() % 100;
             statek->zm_x = 1;
             statek->zm_y = 1;
         }

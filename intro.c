@@ -93,7 +93,7 @@ void intro(void)
         timer_wait();
     }
 
-    play_sound(&soundtab[random(SND_EXPLOSION)]);
+    play_sound(&soundtab[rand() % SND_EXPLOSION]);
     flash();
 
     while (1) {
